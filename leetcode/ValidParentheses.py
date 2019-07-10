@@ -40,27 +40,27 @@ class Solution:
         else:
             return False
 
-        def isValid2(s):
-            stack = []
-            mapping = {")": "(", "}": "{", "]": "["}
+    def isValid2(s):
+        stack = []
+        mapping = {")": "(", "}": "{", "]": "["}
 
-            for char in s:
+        for char in s:
 
-                if char in mapping:
+            if char in mapping:
 
-                    # Pop the topmost element from the stack, if it is non empty
-                    # Otherwise assign a dummy value of '#' to the top_element variable
-                    top_element = stack.pop() if stack else '#'
+                # Pop the topmost element from the stack, if it is non empty
+                # Otherwise assign a dummy value of '#' to the top_element variable
+                top_element = stack.pop() if stack else '#'
 
-                    # The mapping for the opening bracket in our hash and the top
-                    # element of the stack don't match, return False
-                    if mapping[char] != top_element:
-                        return False
-                else:
-                    # We have an opening bracket, simply push it onto the stack.
-                    stack.append(char)
+                # The mapping for the opening bracket in our hash and the top
+                # element of the stack don't match, return False
+                if mapping[char] != top_element:
+                    return False
+            else:
+                # We have an opening bracket, simply push it onto the stack.
+                stack.append(char)
 
-            return not stack
+        return not stack
 
     def isValid3(s):
         map = {')': '(', '}': '{', ']': '['}
