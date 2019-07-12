@@ -47,20 +47,15 @@ class Solution:
         for char in s:
 
             if char in mapping:
-
-                # Pop the topmost element from the stack, if it is non empty
-                # Otherwise assign a dummy value of '#' to the top_element variable
+                
                 top_element = stack.pop() if stack else '#'
-
-                # The mapping for the opening bracket in our hash and the top
-                # element of the stack don't match, return False
+                
                 if mapping[char] != top_element:
                     return False
-            else:
-                # We have an opening bracket, simply push it onto the stack.
+            else:               
                 stack.append(char)
 
-        return not stack
+        return not stack    # stack이 비어 있으면 False(return True), stack에 값이 있으면 True(return False)
 
     def isValid3(s):
         map = {')': '(', '}': '{', ']': '['}
