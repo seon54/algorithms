@@ -49,7 +49,6 @@ class Solution:
         for i in range(len(nums)):
             print(d)
             complement = target - nums[i]
-            if complement in d.keys():
-                print('#')
+            if complement in d.keys():               
                 return [d[complement], i]
             d[nums[i]] = i

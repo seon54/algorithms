@@ -1,10 +1,9 @@
 '''
 Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-
 An input string is valid if:
     1. Open brackets must be closed by the same type of brackets.
     2. Open brackets must be closed in the correct order.
-    
+
 Note that an empty string is also considered valid.
 '''
 
@@ -48,19 +47,14 @@ class Solution:
 
             if char in mapping:
 
-                # Pop the topmost element from the stack, if it is non empty
-                # Otherwise assign a dummy value of '#' to the top_element variable
                 top_element = stack.pop() if stack else '#'
 
-                # The mapping for the opening bracket in our hash and the top
-                # element of the stack don't match, return False
                 if mapping[char] != top_element:
                     return False
             else:
-                # We have an opening bracket, simply push it onto the stack.
                 stack.append(char)
 
-        return not stack
+        return not stack    # stack이 비어 있으면 False(return True), stack에 값이 있으면 True(return False)
 
     def isValid3(s):
         map = {')': '(', '}': '{', ']': '['}
@@ -71,16 +65,3 @@ class Solution:
             else:
                 st.append(e)
         return not st
-
-    def isValid4(s):
-        bracket_map = {"(": ")", "[": "]",  "{": "}"}
-        open_par = set(["(", "[", "{"])
-        stack = []
-        for i in s:
-            if i in open_par:
-                stack.append(i)
-            elif stack and i == bracket_map[stack[-1]]:
-                    stack.pop()
-            else:
-                return False
-        return stack == []
