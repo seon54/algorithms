@@ -15,12 +15,12 @@
 '''
 import sys
 
-times = int(input())
+times = int(sys.stdin.readline())
 
 while times:
     ps = sys.stdin.readline()
     l = []
-    result = 'YES'
+    
     for s in ps:
         if s == '(':
             l.append(s)
@@ -29,6 +29,8 @@ while times:
                 l.pop()
             else:
                 result = 'NO'
+    
+    result = 'YES' if len(l) == 0 else 'NO'
 
     print(result)
 
