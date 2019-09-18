@@ -16,4 +16,57 @@ back: 큐의 가장 뒤에 있는 정수를 출력한다. 만약 큐에 들어�
 
 <출력>
 출력해야하는 명령이 주어질 때마다, 한 줄에 하나씩 출력한다.
+
 """
+
+import sys
+
+
+class Queue(object):
+
+    def __init__(self):
+        self.queue = []
+
+    def push(self, x):
+        self.queue.append(x)
+
+    def pop(self):
+
+        if len(self.queue):
+            value = self.queue[0]
+            del self.queue[0]
+            print(value)
+        else:
+            print(-1)
+
+    def size(self):
+        print(len(self.queue))
+
+    def empty(self):
+        print(0 if len(self.queue) else 1)
+
+    def front(self):
+        print(self.queue[0] if len(self.queue) else -1)
+
+    def back(self):
+        print(self.queue[-1] if len(self.queue) else -1)
+
+
+num = int(sys.stdin.readline())
+my_queue = Queue()
+
+for i in range(num):
+    cmd = sys.stdin.readline().split()
+
+    if cmd[0] == 'push':
+        my_queue.push(cmd[1])
+    elif cmd[0] == 'pop':
+        my_queue.pop()
+    elif cmd[0] == 'size':
+        my_queue.size()
+    elif cmd[0] == 'empty':
+        my_queue.empty()
+    elif cmd[0] == 'front':
+        my_queue.front()
+    elif cmd[0] == 'back':
+        my_queue.back()
