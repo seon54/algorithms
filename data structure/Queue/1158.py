@@ -15,3 +15,23 @@ N과 K가 주어지면 (N, K)-조세퍼스 순열을 구하는 프로그램을 �
 7 3
 <3, 6, 2, 7, 5, 1, 4>
 """
+
+import sys
+from collections import deque
+
+n, k = map(int, sys.stdin.readline().split(' '))
+
+d1 = deque(range(1, n+1))
+d2 = deque()
+
+while d1:
+
+    for i in range(k):
+        v = d1.popleft()
+        if i != k-1:
+            d1.append(v)
+        else:
+            d2.append(v)
+
+result = ', '.join(map(str, d2))
+sys.stdout.write(f'<{result}>')
