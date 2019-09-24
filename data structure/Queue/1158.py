@@ -21,4 +21,23 @@ n, k = map(int, sys.stdin.readline().split())
 
 d = deque(range(1, n+1))
 
+import sys
+from collections import deque
+
+n, k = map(int, sys.stdin.readline().split(' '))
+
+d1 = deque(range(1, n+1))
+d2 = deque()
+
+while d1:
+
+    for i in range(k):
+        v = d1.popleft()
+        if i != k-1:
+            d1.append(v)
+        else:
+            d2.append(v)
+
+result = ', '.join(map(str, d2))
+sys.stdout.write(f'<{result}>')
 
