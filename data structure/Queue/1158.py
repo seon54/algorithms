@@ -15,26 +15,10 @@ N과 K가 주어지면 (N, K)-조세퍼스 순열을 구하는 프로그램을 �
  예제) <3, 6, 2, 7, 5, 1, 4>
 """
 import sys
+from collections import deque
 
 n, k = map(int, sys.stdin.readline().split())
-queue = []
+
+d = deque(range(1, n+1))
 
 
-def del_third(list):
-    while len(list):
-        if len(list) > 2:
-            v = list[2]
-            del list[2]
-            print(v)
-            del_third(list)
-        else:
-            v = list[0]
-            del list[0]
-            print(v)
-            del_third(list)
-
-
-for i in range(n):
-    queue.append(i+1)
-
-del_third(queue)
