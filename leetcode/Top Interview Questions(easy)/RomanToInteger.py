@@ -33,4 +33,3 @@ class Solution:
 
         result += symbol_dict[s[-1]]
         return result
-
