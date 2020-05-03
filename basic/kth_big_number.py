@@ -16,7 +16,7 @@ n, k = map(int, input().split())
 nums = list(map(int, input().split()))
 
 nums.sort(reverse=True)
-print(sum(nums[k-1:k+2]))
+print(sum(nums[0:2], nums[k+1]))
 
 # 수업 내용
 
