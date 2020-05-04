@@ -47,7 +47,8 @@ else:
 
 n = int(input())
 a = list(map(int, input().split()))
-avg = round(sum(a) / n)
+# avg = round(sum(a) / n)
+avg = int(sum(a) / n + 0.5)
 min = 2147000000
 for idx, x in enumerate(a):
     tmp = abs(x - avg)
