@@ -23,7 +23,9 @@ It doesn't matter what values are set beyond the returned length.
 
 class Solution:
     def removeDuplicates(self, nums):
+        print(id(nums))
         nums[:] = sorted(set(nums))
+        print(id(nums))
         return len(nums)
 
 
@@ -35,3 +37,10 @@ class Solution2:
                 i += 1
                 nums[i] = nums[j]
         return i + 1
+
+
+if __name__ == '__main__':
+    s = Solution()
+    nums = [1, 1, 2, 2, 3]
+    print(id(nums))
+    s.removeDuplicates(nums)
