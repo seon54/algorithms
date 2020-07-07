@@ -24,3 +24,29 @@ for i in range(0, n):
             break
 
 print(count)
+
+
+# 수업 내용
+n, m = map(int, input().spllit())
+l = list(map(int, input().split()))
+count = 0
+lt = 0
+rt = 1
+tot = 0
+
+while True:
+    if tot < m:
+        if lt < n:
+            tot += l[lt]
+            rt += 1
+        else:
+            break
+    elif tot == m:
+        count += 1
+        tot -= l[lt]
+        lt += 1
+    else:
+        tot -= l[lt]
+        lt += 1
+        
+print(count)
