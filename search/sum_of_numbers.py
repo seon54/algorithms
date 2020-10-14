@@ -27,18 +27,17 @@ print(count)
 
 
 # 수업 내용
-
-n, m = map(int, input().split())
+n, m = map(int, input().spllit())
 l = list(map(int, input().split()))
 count = 0
 lt = 0
 rt = 1
-tot = l[0]
+tot = 0
 
 while True:
     if tot < m:
-        if rt < n:
-            tot += l[rt]
+        if lt < n:
+            tot += l[lt]
             rt += 1
         else:
             break
@@ -49,5 +48,5 @@ while True:
     else:
         tot -= l[lt]
         lt += 1
-
+        
 print(count)
