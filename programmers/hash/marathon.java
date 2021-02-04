@@ -3,7 +3,7 @@ package programmers.hash;
 import java.util.*;
 
 
-class Solution {
+public class Marathon {
     public String solution(String[] participant, String[] completion) {
         String answer = "";
         Map<String, Integer> map = new HashMap<>();
