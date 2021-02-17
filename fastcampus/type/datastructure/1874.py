@@ -43,7 +43,7 @@ for i in range(1, n + 1):
         result.append('-')
     else:
         print('NO')
-        break
+        exit(0)
 
-print(result)
+print('\n'.join(result))
 
