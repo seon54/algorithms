@@ -4,8 +4,6 @@
 유형: 재귀
 추천 풀이 시간: 40분
 """
-import sys
-
 
 def solve(n, x, y):
     global result
@@ -33,6 +31,6 @@ def solve(n, x, y):
     solve(n / 2, x + n /2, y + n / 2)
 
 
-n, r, c = list(map(int, sys.stdin.readline().split(' ')))
+n, r, c = map(int, input().split())
 result = 0
 solve(2 ** n, 0, 0)

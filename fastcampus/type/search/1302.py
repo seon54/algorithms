@@ -58,6 +58,6 @@ array = []
 
 for book, number in books.items():
     if number == target:
-        array.append(number)
+        array.append(book)
 
 print(sorted(array)[0])
