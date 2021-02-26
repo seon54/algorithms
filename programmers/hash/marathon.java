@@ -51,7 +51,7 @@ public class Marathon {
     }
 
     public static void main(String[] args) {
-        Solution s = new Solution();
+        Marathon s = new Marathon();
 
         String[] participant = {"leo", "kiki", "eden"};
         String[] completion = {"eden", "leo"};

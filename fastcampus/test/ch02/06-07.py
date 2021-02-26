@@ -13,7 +13,7 @@
 [string]
 - 변경할 수 없는 변수 => list로 변환해서 사용
 - '+', '*' 연산 조심 => join() 활용   ex1. 참고
-- split(), replace() 등 메소드 활용
+- split(), replace(), count() 등 메소드 활용
 - slicing 자유롭게 할 수 있어야 함  => 슬라이싱을 하게 되면 새로운 객체를 생성하게 되는 점 기억
 - char 를 ord 와 chr 로 다루기
 
