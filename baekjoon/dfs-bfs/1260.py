@@ -55,32 +55,39 @@ bfs(d, v)
 
 ########################################################################
 
+def dfs(arr, start):
+    visited, stack = deque(), [start]
+
+    while stack:
+        node = stack.pop()
+        if str(node) not in visited:
+            visited.append(str(node))
+            arr[node].sort(reverse=True)
+            stack.extend(arr[node])
+
+    print(' '.join(visited))
+
+
+def bfs(arr, start):
+    visited, queue = deque(), deque([start])
+
+    while queue:
+        node = queue.popleft()
+        if str(node) not in visited:
+            visited.append(str(node))
+            arr[node].sort()
+            queue.extend(arr[node])
+
+    print(' '.join(visited))
+
+
 n, m, v = map(int, input().split())
+arr = [[] for _ in range(n + 1)]
 
-adj = [[0 for i in range(n + 1)] for j in range(n + 1)]
+for _ in range(m):
+    a, b = map(int, input().split())   
+    arr[a].append(b)
+    arr[b].append(a)
 
-for i in range(m):
-    a, b = map(int, input().split())
-    adj[a][b] = 1
-    adj[b][a] = 1
-
-def dfs(v, hist, adj):
-    hist.append(v)
-    for i in range(1, n + 1):
-        if adj[v][i] and i not in hist:
-            hist = dfs(i, hist, adj)
-    return hist
-
-def bfs(v, adj):
-    q = [v]
-    hist = [v]
-    while q:
-        now = q.pop(0)
-        for i in range(1, n + 1):
-            if adj[now][i] and i not in hist:
-                q.append(i)
-                hist.append(i)
-    return hist
-
-print(' '.join(map(str, dfs(v, [], adj))))
-print(' '.join(map(str, bfs(v, adj))))
+dfs(arr, v)
+bfs(arr, v)
