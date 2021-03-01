@@ -10,6 +10,7 @@ https://www.acmicpc.net/problem/5719
 - 최단 경로에 포함되는 모든 간선을 추적
 - 추적한 경로 제외 후, 재탐색
 - BFS 로 추적
+- 추적할 때 reversed 주의
 """
 from collections import deque
 import heapq
@@ -17,22 +18,22 @@ import sys
 
 
 def dijkstra():
-    q, distance[start] = [], 0
-    heapq.heappush(q, (0, start))
+    q, distance[s] = [], 0
+    heapq.heappush(q, (0, s))
 
     while q:
         cur_dis, cur_node = heapq.heappop(q)
 
         if distance[cur_node] < cur_dis:
             continue        
-        else:
-            for node, dis in graph[cur_node]:
-                new_dis = cur_dis + dis
+        
+        for node, dis in graph[cur_node]:
+            new_dis = cur_dis + dis
 
-                if new_dis < distance[node] and not dropped[cur_node][node]:
-                    distance[node] = new_dis
-                    heapq.heappush(q, (new_dis, node))
-                
+            if new_dis < distance[node] and not dropped[cur_node][node]:
+                distance[node] = new_dis
+                heapq.heappush(q, (new_dis, node))
+            
 
 def bfs():
     q = deque()
