@@ -44,7 +44,7 @@ def bfs():
         if now == s:
             continue
         for prev, cost in reversed_graph[now]:
-            if distance[now] == distance[prev] + cost:
+            if distance[now] == distance[prev] + cost and not dropped[prev][now]:
                 dropped[prev][now] = True
                 q.append(prev)
 
