@@ -40,3 +40,29 @@ result.sort()
 print(len(result))
 for i in result:
     print(i)
+
+########################################################
+
+def dfs(a, b):
+    global cnt
+    cnt += 1
+    check[a][b] = 1
+    
+    for i in range(4):
+        x, y = a + dx[i], b + dy[i]
+
+        if 0 <= x < n and 0 <= y < n and graph[x][y] and not check[x][y]:
+            dfs(x, y)
+    
+
+for i in range(n):
+    for j in range(n):
+        if graph[i][j] and not check[i][j]:
+            cnt = 0
+            dfs(i, j)
+            result.append(cnt)
+
+result.sort()
+print(len(result))
+for i in result:
+    print(i)
