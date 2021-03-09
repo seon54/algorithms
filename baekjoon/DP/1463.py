@@ -1,28 +1,17 @@
 import sys
 
+# 점화식 dp(n) = min(dpn // 3) + 1, dp(n // 2) + 1, dp(n - 1) + 1)
 
-def solve(n):
-    if n <= 3: return 1
+n = int(input())
+dp = [0] * (n + 1)
 
-    arr = [0] * (n + 1)
+for i in range(2, n + 1):
+    dp[i] = dp[i - 1] + 1
 
-    for i in range(1, 4):
-        arr[i] = 1
+    if not i % 2:
+        dp[i] = min(dp[i], dp[i // 2] + 1)
 
-    for i in range(4, n + 1):
-        if i % 2 == 0 and i % 3 == 0:
-            arr[i] = min(arr[i - 1], arr[i // 2], arr[i // 3]) + 1
-        elif i % 3 == 0:
-            arr[i] = min(arr[i - 1], arr[i // 3]) + 1
-        elif i % 2 == 0:
-            arr[i] = min(arr[i - 1], arr[i // 2]) + 1
-        else:
-            arr[i] = arr[i - 1] + 1
+    if not i % 3:
+        dp[i] = min(dp[i], dp[i // 3] + 1)
 
-    print(list(range(n + 1)))
-    print(arr)
-    return arr[n]
-
-print(solve(int(sys.stdin.readline())))
-
-# 실패
+print(dp[n])
