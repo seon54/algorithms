@@ -1,7 +1,6 @@
 n = int(input())
 arr = list(map(int, input().split()))
-
-dp = [1 for i in range(n)]
+dp = [1] * n
 result = [[x] for x in arr]
 
 for i in range(n):
@@ -43,12 +42,6 @@ for i in range(1, n + 1):
     else:
         dp[i] = bisect_left(cmp, arr[i])
         cmp[dp[i]] = arr[i]
-
-    print(f'cmp: {cmp}')
-    print(f'dp: {dp}')
-    print(f'max: {max_}')
-    print()
-
 
 res = []
 for i in range(n, 0, -1):

@@ -1,8 +1,5 @@
-from collections import deque
 from copy import deepcopy
 import sys
-
-sys.setrecursionlimit(100000)
 
 input = sys.stdin.readline
 n, m = map(int, input().split())

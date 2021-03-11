@@ -10,8 +10,6 @@ for i in range(1, n + 1):
         if j < w:
             dp[i][j] = dp[i - 1][j]
         else:
-            dp[i][j] = max(dp[i-1][j], dp[i-1][j-w] + v)
+            dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - w] + v)
             
-            
-for i in dp:
-    print(i)
+print(dp[n][k])
