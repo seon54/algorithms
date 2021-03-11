@@ -7,46 +7,50 @@
 O(M * logC)
 """
 from collections import deque
+import sys
 
-
+input = sys.stdin.readline
 n, m = list(map(int, input().split()))
 adj = [[] for _ in range(n + 1)]
-
-def bfs(c):
-    queue = deque([start_node])
-    visited = [False] * (c + 1)
-    visited[start_node] = True
-
-    while queue:
-        x = queue.popleft()
-        for y, weight in adj[x]:
-            if not visited[y] and weight >= c:
-                visited[y] = True
-                queue.append(y)
-
-    return visited[end_node]
-
-
-start = 1_000_000_000
-end = 1
+min_value, max_value = 1, 0
 
 for _ in range(m):
     x , y, weight = map(int, input().split())
     adj[x].append((y, weight))
     adj[y].append((x, weight))
-    start = min(start, weight)
-    end = min(end, weight)
+    max_value = max(max_value, weight)
 
-start_node, end_node = map(int ,input().split())
+start, end = map(int ,input().split())
 
-result = start
 
-while (start <= end):
-    mid = (start + end) // 2
+def bfs(mid):
+    queue = deque([start])
+    visited = [0] * (n + 1)
+    visited[start] = 1
+
+    while queue:
+        x = queue.popleft()        
+
+        for y, weight in adj[x]:
+
+            # 아직 방문하지 않았고 무게 제한에 걸리지 않을 경우
+            if not visited[y] and mid <= weight:
+                visited[y] = 1
+                queue.append(y)
+
+                if y == end: return True
+
+    return False
+
+
+while min_value <= max_value:
+    mid = (min_value + max_value) // 2
+
     if bfs(mid):
-        result = mid
-        start = mid + 1
+        # 이동 가능
+        min_value = mid + 1
     else:
-        end = mid - 1
+        # 이동 불가
+        max_value = mid - 1
 
-print(result)
+print(max_value)

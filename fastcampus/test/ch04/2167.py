@@ -21,4 +21,4 @@ for i in range(1, N + 1):
 
 for _ in range(int(input())):
     i, j, x, y = map(int, input().split())
-    print(DP[x][y] - DP[i - 1][y] - DP[x][j -1] + DP[i - 1][j - 1])
+    print(DP[x][y] - DP[i - 1][y] - DP[x][j - 1] + DP[i - 1][j - 1])
